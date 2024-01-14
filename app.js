@@ -4,9 +4,24 @@ const email = document.querySelector('#email')
 const password = document.querySelector('#password')
 const cpassword = document.querySelector('#cpassword')
 
+// function myFunction() {
+//     if (password.type === "password") {
+//       password.type = "text";
+//     } else {
+//       password.type = "password";
+//     }
+// }
+
+let success = true
+
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    validateInput()
+       
+    if (!validateInput()){
+        e.preventDefault();
+    }else{
+        e.preventDefault();
+        alert('submited')
+    }
 })
 
 
@@ -18,6 +33,7 @@ function validateInput(){
 
     //username
     if(usernameVal === ''){
+        success = false
         setError(username,'Username is required') 
     }else{
         setSuccess(username)
@@ -25,6 +41,7 @@ function validateInput(){
 
     //email
     if(emailVal === ''){
+        success = false
         setError(email,'email is required')
     }else if(!validateEmail(emailVal)){
         setError(email,'Enter the valid email')
@@ -34,6 +51,7 @@ function validateInput(){
 
     //password
     if(passwordVal === ''){
+        success = false
         setError(password,'password is required')
     }else if(passwordVal.length < 8){
         setError(password,'password must be greater than 8')
@@ -43,12 +61,15 @@ function validateInput(){
 
     //confirm password
     if(cpasswordVal === ''){
+        success = false
         setError(cpassword,'confirm password is required')
     }else if(cpasswordVal !== passwordVal){
         setError(cpassword,'password is not matching')
     }else{
         setSuccess(cpassword)
     }
+
+    return success
 }
 
 

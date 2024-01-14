@@ -57,3 +57,15 @@ h1{
 .input-group.error input{
     border-color: red;
 }
+
+.password-input-container {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Adjust this value to position the icon as needed */
+    transform: translateY(-50%);
+    cursor: pointer;
+}
